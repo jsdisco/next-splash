@@ -1,25 +1,14 @@
 import { server } from '../../config';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Modal from 'react-modal';
-
 import Photo from '../../components/Photo';
 
 import styles from '../../styles/BigImageModal.module.css';
 
+Modal.setAppElement('#__next');
+
 export default function BigImage({ photo }) {
   const router = useRouter();
-
-  /*useEffect(() => {
-    router.prefetch('/');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);*/
-
-  /*if (!router.isFallback && !photo) {
-    return <div>ERROR 404 PAGE NOT FOUND</div>;
-  }
-
-  console.log('/PHOTO/[id].js');*/
 
   return (
     <div>

@@ -1,15 +1,9 @@
 import { server } from '../config';
-
 import { useState } from 'react';
-
-import Modal from 'react-modal';
-
 import PhotoList from '../components/PhotoList';
 import PhotoGrid from '../components/PhotoGrid';
 
 import styles from '../styles/Home.module.css';
-
-Modal.setAppElement('#__next');
 
 export default function Home({ data }) {
   const [photos, setPhotos] = useState(data);
