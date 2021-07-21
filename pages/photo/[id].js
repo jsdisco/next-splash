@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 
 import Photo from '../../components/Photo';
 
+import styles from '../../styles/BigImageModal.module.css';
+
 export default function BigImage({ photo }) {
   const router = useRouter();
 
@@ -20,15 +22,16 @@ export default function BigImage({ photo }) {
   console.log('/PHOTO/[id].js');*/
 
   return (
-    <>
+    <div>
       <Modal
         isOpen={true}
         onRequestClose={() => router.push('/')}
         contentLabel="BigImage Modal"
+        className={styles.modal}
       >
         {photo && <Photo photo={photo} isBig={true} />}
       </Modal>
-    </>
+    </div>
   );
 }
 export const getServerSideProps = async ({ query }) => {

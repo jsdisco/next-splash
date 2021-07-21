@@ -1,34 +1,31 @@
 .title {
   padding: 2rem 0;
-  line-height: 1.15;
-  font-size: 2rem;
+  margin-bottom: 1rem;
   background: #fff;
 }
 .title h1 {
-  margin-bottom: 1rem;
-}
-.title a,
-.title span {
-  color: cadetblue;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  line-height: 1.15;
 }
 
-.title,
-.description {
+.title p {
+  font-size: 1.5rem;
   text-align: center;
 }
 
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
+.title span {
+  display: inline-block;
+  margin: 0 1rem;
 }
 
 .title img {
   transform: rotate(90deg);
+}
+
+.colourSpan {
+  color: cadetblue;
 }

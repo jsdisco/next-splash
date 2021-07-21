@@ -21,7 +21,7 @@ export default function Home({ data }) {
   };
   console.log('RENDER HOME', isGridLayout);
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.homeTop}>
         <h1>Photos</h1>
         <button className={styles.btn} onClick={handleGridSwitch}>

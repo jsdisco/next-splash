@@ -1,4 +1,4 @@
-import styles from '../styles/NotFound.module.css';
+import styles from '../styles/CustomError.module.css';
 
 const InternalServerError = () => {
   return (
