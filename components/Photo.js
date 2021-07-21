@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import PhotoInfo from './PhotoInfo';
 
 export default function Photo({ photo, isBig }) {
   return (
@@ -11,10 +12,11 @@ export default function Photo({ photo, isBig }) {
             width={photo.width}
             height={photo.height}
             alt={photo.alt}
+            layout="intrinsic"
           />
         </a>
       </Link>
-      {isBig && <h3>{photo.width}</h3>}
+      {isBig && <PhotoInfo photo={photo} />}
     </div>
   );
 }

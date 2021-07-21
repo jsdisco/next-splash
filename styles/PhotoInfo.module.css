@@ -1,0 +1,15 @@
+.listItem {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 0.875rem;
+}
+
+.listItemLeft {
+  display: inline-block;
+  width: 100px;
+}
+
+.attribution {
+  text-align: right;
+  font-style: italic;
+}
