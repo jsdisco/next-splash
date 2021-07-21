@@ -1,0 +1,7 @@
+.imgList {
+  display: flex;
+  flex-direction: column;
+}
+.imgWrapper {
+  margin-bottom: 18px;
+}

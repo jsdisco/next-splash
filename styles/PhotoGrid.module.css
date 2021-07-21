@@ -1,0 +1,26 @@
+.imgGrid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgWrapper {
+  margin-bottom: 18px;
+}
+
+.imgColumnLeft {
+  width: calc(33% - 12px);
+  display: flex;
+  flex-direction: column;
+}
+.imgColumnCenter {
+  width: calc(33% - 12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imgColumnRight {
+  width: calc(33% - 12px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

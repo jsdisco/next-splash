@@ -1,0 +1,18 @@
+.navigation {
+  height: 80px;
+  background-color: cadetblue;
+}
+.navigation ul {
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.navigation a {
+  padding: 6px 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+}
