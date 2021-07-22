@@ -4,6 +4,8 @@ TODO:
 
 COMMENTS:
 
+- DEAD END
+
 - uses getServerSideProps
 
 - version where clicking on a photo opens a modal but doesn't change the URL
