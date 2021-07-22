@@ -7,6 +7,7 @@ const unsplash = createApi({
 export default async function handler(req, res) {
   const page = req.query.page || 1;
   const result = await unsplash.photos.list({ page, perPage: 10 });
+
   if (result.errors) {
     console.log(`ERROR in unsplash.js: ${result.errors}`);
     res.json({ errors });

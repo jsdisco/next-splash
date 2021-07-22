@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css';
 
 export default function Home({ data }) {
   const [photos, setPhotos] = useState(null);
-  const [currPage, setCurrPage] = useState(2);
+  const [currPage, setCurrPage] = useState(2); // initial fetch in getStaticProps defaults to 1, further fetches from the frontend start at 2
   const [isGridLayout, setIsGridLayout] = useState(false);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ export default function Home({ data }) {
   useEffect(() => {
     const fetchImgs = async () => {
       const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
-      const refetchData = await res.json();
-      setPhotos((prev) => [...prev, ...refetchData]);
+      const refetchedData = await res.json();
+      setPhotos((prev) => [...prev, ...refetchedData]);
     };
     fetchImgs();
   }, [currPage]);
@@ -29,14 +29,14 @@ export default function Home({ data }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.homeTop}>
+      <div className={styles.topMenu}>
         <h1>Photos</h1>
         <button
           className={styles.btn}
           onClick={handleGridSwitch}
           title={isGridLayout ? 'show as list' : 'show as grid'}
         >
-          {isGridLayout ? <BsViewStacked size="24" /> : <BsGrid1X2 size="24" />}
+          {isGridLayout ? <BsViewStacked /> : <BsGrid1X2 />}
         </button>
       </div>
 
@@ -52,7 +52,6 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps = async () => {
-  console.log('FETCH IMAGES');
   const res = await fetch(`${server}/api/unsplash`);
   const data = await res.json();
 

@@ -5,7 +5,7 @@ import styles from '../styles/Header.module.css';
 
 const Header = () => {
   return (
-    <header className={styles.title}>
+    <header className={styles.header}>
       <h1>
         <span>Next</span>
         <Image src="/favicon.ico" alt="" width={80} height={80} />

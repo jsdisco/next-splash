@@ -1,29 +1,22 @@
-.title {
+.header {
   padding: 2rem 0;
-  margin-bottom: 1rem;
   background: #fff;
 }
-.title h1 {
+.header h1 {
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  line-height: 1.15;
 }
 
-.title p {
+.header p {
   font-size: 1.5rem;
   text-align: center;
 }
 
-.title span {
-  display: inline-block;
+.header span {
   margin: 0 1rem;
-}
-
-.title img {
-  transform: rotate(90deg);
 }
 
 .colourSpan {

@@ -1,7 +1,7 @@
 import { formatDate } from '../utils/helpers';
 import styles from '../styles/PhotoInfo.module.css';
 
-export default function PhotoInfo({ photo }) {
+export default function PhotoInfo({ photo, closeModal }) {
   if (photo.links.html === 'https://unsplash.com/photos/e5dlsEXc4dI') {
     console.log(photo);
   }
@@ -30,39 +30,42 @@ export default function PhotoInfo({ photo }) {
       </div>
       <div className={styles.listItem}>
         <p>
-          <span className={styles.listItemLeft}>Downloads: </span>
+          <span className={styles.listLeftSpan}>Downloads: </span>
           <span>{photo.downloads || '-'}</span>
         </p>
       </div>
       <div className={styles.listItem}>
         <p>
-          <span className={styles.listItemLeft}>Likes: </span>
+          <span className={styles.listLeftSpan}>Likes: </span>
           <span>{photo.likes}</span>
         </p>
       </div>
       <div className={styles.listItem}>
         <p>
-          <span className={styles.listItemLeft}>Created at: </span>
+          <span className={styles.listLeftSpan}>Created at: </span>
           <span>{formatDate(photo.created_at)}</span>
         </p>
       </div>
       <div className={styles.listItem}>
         <p>
-          <span className={styles.listItemLeft}>Last updated: </span>
+          <span className={styles.listLeftSpan}>Last updated: </span>
           <span>{formatDate(photo.updated_at)}</span>
         </p>
       </div>
       <div className={styles.listItem}>
         <p>
-          <span className={styles.listItemLeft}>Dimensions: </span>
+          <span className={styles.listLeftSpan}>Dimensions: </span>
           <span>{`${photo.width} x ${photo.height}`}</span>
         </p>
       </div>
-      <div className={styles.listItemLast}>
+      <div className={styles.listItem}>
         <p>
-          <span className={styles.listItemLeft}>Unsplash Link:</span>
+          <span className={styles.listLeftSpan}>Unsplash Link:</span>
           <a href={photo.links.html}>{photo.links.html}</a>
         </p>
+      </div>
+      <div className={styles.listItemButton}>
+        <button onClick={closeModal}>close</button>
       </div>
     </div>
   );

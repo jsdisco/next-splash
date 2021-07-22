@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import Modal from 'react-modal';
 import Image from 'next/image';
 import PhotoInfo from './PhotoInfo';
-import Modal from 'react-modal';
 import { IoCloseCircle } from 'react-icons/io5';
 
-import styles from '../styles/Modal.module.css';
+import styles from '../styles/Photo.module.css';
 
 Modal.setAppElement('#__next');
 
@@ -13,14 +13,16 @@ export default function Photo({ photo }) {
 
   const loader = ({ src }) => src;
 
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <div>
+    <div className={styles.photo}>
       {isModalOpen ? (
         <div>
           <Modal
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
-            contentLabel="BigImage Modal"
+            contentLabel="Photo - Additional Info"
             className={styles.modal}
           >
             <div className={styles.iconClose}>
@@ -37,7 +39,7 @@ export default function Photo({ photo }) {
               alt={photo.alt_description}
               loader={loader}
             />
-            <PhotoInfo photo={photo} />
+            <PhotoInfo photo={photo} closeModal={closeModal} />
           </Modal>
         </div>
       ) : (
@@ -53,9 +55,3 @@ export default function Photo({ photo }) {
     </div>
   );
 }
-
-// placeholder="blur"
-// blurDataURL={`data:image/jpeg;base83,${photo.blur_hash}`}
-
-// data:image/jpeg;base64,LEHV6nWB2yk8pyoJadR*.7kCMdnj
-// data:image/jpeg;base64,LuHV9wRjWBay~qWBRjayofj[WBj[

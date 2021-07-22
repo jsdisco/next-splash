@@ -1,20 +1,32 @@
 .listItem {
-  padding: 16px 0;
+  padding: 1rem 0;
   font-size: 0.875rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.listItemLast {
-  padding: 16px 0;
-  font-size: 0.875rem;
+.listItemButton {
+  padding: 1.5rem 0 0.5rem;
+  text-align: center;
 }
 
-.listItemLeft {
-  display: inline-block;
-  width: 100px;
+.listItemButton button {
+  padding: 0.5rem 1rem;
+  background: cadetblue;
+  border: none;
+  border-radius: 4px;
+  outline: black;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #f5f5f5;
+  cursor: pointer;
 }
 
 .attribution {
   text-align: right;
   font-style: italic;
+}
+
+.listLeftSpan {
+  display: inline-block;
+  width: 7rem;
 }

@@ -1,6 +1,10 @@
 .container {
   height: 50vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.container p {
+  margin-bottom: 2rem;
 }

@@ -3,8 +3,11 @@ import Head from 'next/head';
 const Meta = () => {
   return (
     <Head>
-      <meta name="keywords" content="images, high quality, free"></meta>
-      <meta name="description" content="awesome images"></meta>
+      <meta name="keywords" content="images, high quality"></meta>
+      <meta
+        name="description"
+        content="awesome images brought to you by Unsplash, powered by Next.js"
+      ></meta>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1"
