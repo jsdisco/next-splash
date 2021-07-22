@@ -15,7 +15,7 @@ export default function Photo({ photo, shouldTriggerRefetchOnLoad }) {
     console.log('TRIGGER FETCH');
   };
 
-  console.log(`data:image/jpeg;base83,${photo.blur_hash}`);
+  const loader = ({ src }) => src;
 
   return (
     <div>
@@ -39,7 +39,7 @@ export default function Photo({ photo, shouldTriggerRefetchOnLoad }) {
               width={photo.width}
               height={photo.height}
               alt={photo.alt_description}
-              layout="intrinsic"
+              loader={loader}
             />
             <PhotoInfo photo={photo} />
           </Modal>
@@ -50,9 +50,9 @@ export default function Photo({ photo, shouldTriggerRefetchOnLoad }) {
           width={photo.width}
           height={photo.height}
           alt={photo.alt_description}
-          layout="intrinsic"
           onClick={() => setIsModalOpen(true)}
           onLoad={() => fetchImages()}
+          loader={loader}
         />
       ) : (
         <Image
@@ -60,19 +60,16 @@ export default function Photo({ photo, shouldTriggerRefetchOnLoad }) {
           width={photo.width}
           height={photo.height}
           alt={photo.alt_description}
-          layout="intrinsic"
           onClick={() => setIsModalOpen(true)}
-          placeholder="blur"
-          blurDataURL={`data:image/jpeg;base83,${photo.blur_hash}`}
+          loader={loader}
         />
       )}
     </div>
   );
 }
+
+// placeholder="blur"
+// blurDataURL={`data:image/jpeg;base83,${photo.blur_hash}`}
+
 // data:image/jpeg;base64,LEHV6nWB2yk8pyoJadR*.7kCMdnj
 // data:image/jpeg;base64,LuHV9wRjWBay~qWBRjayofj[WBj[
-/*
-placeholder="blur"
-blurDataURL={`data:image/jpeg;base64,${photo.blur_hash}`}
-blurDataURL={`data:image/jpeg;base83,${photo.blur_hash}`}
-*/

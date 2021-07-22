@@ -4,9 +4,7 @@ TODO:
 
 COMMENTS:
 
-- DEAD END
-
-- uses getServerSideProps
+- uses getStaticProps with revalidate=60
 
 - version where clicking on a photo opens a modal but doesn't change the URL
 

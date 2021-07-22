@@ -49,10 +49,10 @@ export default function Home({ data }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   console.log('FETCH IMAGES');
   const res = await fetch(`${server}/api/unsplash`);
   const data = await res.json();
 
-  return { props: { data } };
+  return { props: { data }, revalidate: 60 };
 };
