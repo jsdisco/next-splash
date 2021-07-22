@@ -10,8 +10,6 @@ export default function Home({ data }) {
   const [currPage, setCurrPage] = useState(2);
   const [isGridLayout, setIsGridLayout] = useState(false);
 
-  const handleGridSwitch = () => setIsGridLayout((prev) => !prev);
-
   useEffect(() => {
     setPhotos(data);
   }, [data]);
@@ -24,6 +22,8 @@ export default function Home({ data }) {
     };
     fetchImgs();
   }, [currPage]);
+
+  const handleGridSwitch = () => setIsGridLayout((prev) => !prev);
 
   const triggerRefetch = () => setCurrPage((prev) => prev + 1);
 

@@ -3,7 +3,27 @@ import styles from '../styles/About.module.css';
 const About = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>About Next-Splash</h1>
+      <div>
+        <h1>About</h1>
+        <p>
+          <span>Image Gallery using the </span>
+          <a href="https://unsplash.com/" target="blank" rel="noreferrer">
+            Unsplash
+          </a>
+          <span> API, built with </span>
+          <a href="https://nextjs.org/" target="blank" rel="noreferrer">
+            Next.js.
+          </a>
+        </p>
+      </div>
+      <footer className={styles.footer}>
+        <p>
+          <span>Copyright 2021 </span>
+          <a href="https://twitter.com/jsdisco" target="blank" rel="noreferrer">
+            @jsdisco
+          </a>
+        </p>
+      </footer>
     </div>
   );
 };
