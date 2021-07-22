@@ -1,17 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 
-import headerStyles from '../styles/Header.module.css';
+import styles from '../styles/Header.module.css';
 
 const Header = () => {
   return (
-    <header className={headerStyles.title}>
+    <header className={styles.title}>
       <h1>
         <span>Next</span>
         <Image src="/favicon.ico" alt="" width={80} height={80} />
-        <span className={headerStyles.colourSpan}>Splash</span>
+        <span className={styles.colourSpan}>Splash</span>
       </h1>
-      <p>Awesome images</p>
+      <p>Awesome Images</p>
     </header>
   );
 };

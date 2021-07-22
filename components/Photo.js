@@ -4,16 +4,12 @@ import PhotoInfo from './PhotoInfo';
 import Modal from 'react-modal';
 import { IoCloseCircle } from 'react-icons/io5';
 
-import styles from '../styles/BigImageModal.module.css';
+import styles from '../styles/Modal.module.css';
 
 Modal.setAppElement('#__next');
 
-export default function Photo({ photo, shouldTriggerRefetchOnLoad }) {
+export default function Photo({ photo }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const fetchImages = () => {
-    console.log('TRIGGER FETCH');
-  };
 
   const loader = ({ src }) => src;
 
@@ -44,16 +40,6 @@ export default function Photo({ photo, shouldTriggerRefetchOnLoad }) {
             <PhotoInfo photo={photo} />
           </Modal>
         </div>
-      ) : shouldTriggerRefetchOnLoad ? (
-        <Image
-          src={photo.urls.regular}
-          width={photo.width}
-          height={photo.height}
-          alt={photo.alt_description}
-          onClick={() => setIsModalOpen(true)}
-          onLoad={() => fetchImages()}
-          loader={loader}
-        />
       ) : (
         <Image
           src={photo.urls.regular}

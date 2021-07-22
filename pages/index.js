@@ -1,30 +1,31 @@
 import { server } from '../config';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PhotoList from '../components/PhotoList';
-import PhotoGrid from '../components/PhotoGrid';
 import { BsViewStacked, BsGrid1X2 } from 'react-icons/bs';
 
 import styles from '../styles/Home.module.css';
 
 export default function Home({ data }) {
-  const [photos, setPhotos] = useState(data);
+  const [photos, setPhotos] = useState(null);
   const [currPage, setCurrPage] = useState(2);
-  const [isGridLayout, setIsGridLayout] = useState(true);
+  const [isGridLayout, setIsGridLayout] = useState(false);
 
-  const handleGridSwitch = () => {
-    setIsGridLayout((prev) => !prev);
-  };
+  const handleGridSwitch = () => setIsGridLayout((prev) => !prev);
 
-  const fetchImages = async () => {
-    console.log('REFETCH');
-    const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
-    const data = await res.json();
-    console.log(data);
-    setPhotos((prev) => [...prev, ...data]);
-    setCurrPage((prev) => prev + 1);
-  };
+  useEffect(() => {
+    setPhotos(data);
+  }, [data]);
 
-  console.log('RENDER HOME', isGridLayout);
+  useEffect(() => {
+    const fetchImgs = async () => {
+      const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
+      const refetchData = await res.json();
+      setPhotos((prev) => [...prev, ...refetchData]);
+    };
+    fetchImgs();
+  }, [currPage]);
+
+  const triggerRefetch = () => setCurrPage((prev) => prev + 1);
 
   return (
     <div className={styles.wrapper}>
@@ -39,12 +40,13 @@ export default function Home({ data }) {
         </button>
       </div>
 
-      {photos &&
-        (isGridLayout ? (
-          <PhotoGrid photos={photos} />
-        ) : (
-          <PhotoList photos={photos} />
-        ))}
+      {photos && (
+        <PhotoList
+          photos={photos}
+          triggerRefetch={triggerRefetch}
+          isGridLayout={isGridLayout}
+        />
+      )}
     </div>
   );
 }

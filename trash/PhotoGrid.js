@@ -4,7 +4,7 @@ import { dividePhotosIntoColumns } from '../utils/helpers';
 
 import gridStyles from '../styles/PhotoGrid.module.css';
 
-export default function PhotoGrid({ photos }) {
+export default function PhotoGrid({ photos, triggerRefetch }) {
   const [photoLists, setPhotoLists] = useState(dividePhotosIntoColumns(photos));
   const [lastId, setLastId] = useState(photos[photos.length - 1].id);
 

@@ -2,7 +2,19 @@
   display: flex;
   flex-direction: column;
 }
-
 .imgWrapper {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+}
+
+.masonryGrid {
+  display: flex;
+  margin-left: -16px;
+  width: auto;
+}
+.masonryGridColumn {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+.masonryGridColumn > div {
+  margin-bottom: 16px;
 }

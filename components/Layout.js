@@ -2,15 +2,15 @@ import Meta from './Meta';
 import Nav from './Nav';
 import Header from './Header';
 
-import layoutStyles from '../styles/Layout.module.css';
+import styles from '../styles/Layout.module.css';
 
 const Layout = ({ children }) => {
   return (
-    <div className={layoutStyles.container}>
+    <div className={styles.container}>
       <Meta />
       <Nav />
       <Header />
-      <main className={layoutStyles.main}>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 };

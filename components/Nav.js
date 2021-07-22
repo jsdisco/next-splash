@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-import navStyles from '../styles/Nav.module.css';
+import styles from '../styles/Nav.module.css';
 
 const Nav = () => {
   return (
-    <nav className={navStyles.navigation}>
+    <nav className={styles.navigation}>
       <ul>
         <li>
           <Link href="/">
