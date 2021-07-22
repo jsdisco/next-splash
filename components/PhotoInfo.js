@@ -2,6 +2,10 @@ import { formatDate } from '../utils/helpers';
 import styles from '../styles/PhotoInfo.module.css';
 
 export default function PhotoInfo({ photo }) {
+  if (photo.links.html === 'https://unsplash.com/photos/e5dlsEXc4dI') {
+    console.log(photo);
+  }
+
   return (
     <div>
       <div className={styles.listItem}>
@@ -27,7 +31,7 @@ export default function PhotoInfo({ photo }) {
       <div className={styles.listItem}>
         <p>
           <span className={styles.listItemLeft}>Downloads: </span>
-          <span>{photo.downloads}</span>
+          <span>{photo.downloads || '-'}</span>
         </p>
       </div>
       <div className={styles.listItem}>
@@ -52,6 +56,12 @@ export default function PhotoInfo({ photo }) {
         <p>
           <span className={styles.listItemLeft}>Dimensions: </span>
           <span>{`${photo.width} x ${photo.height}`}</span>
+        </p>
+      </div>
+      <div className={styles.listItemLast}>
+        <p>
+          <span className={styles.listItemLeft}>Unsplash Link:</span>
+          <a href={photo.links.html}>{photo.links.html}</a>
         </p>
       </div>
     </div>

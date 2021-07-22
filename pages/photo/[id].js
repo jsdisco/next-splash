@@ -1,37 +1,37 @@
-import { server } from '../../config';
-import { useRouter } from 'next/router';
-import Modal from 'react-modal';
-import Photo from '../../components/Photo';
+// import { server } from '../../config';
+// import { useRouter } from 'next/router';
+// import Modal from 'react-modal';
+// import Photo from '../../components/Photo';
 
-import styles from '../../styles/BigImageModal.module.css';
+// import styles from '../../styles/BigImageModal.module.css';
 
-Modal.setAppElement('#__next');
+// Modal.setAppElement('#__next');
 
-export default function BigImage({ photo }) {
-  const router = useRouter();
+// export default function BigImage({ photo }) {
+//   const router = useRouter();
 
-  return (
-    <div>
-      <Modal
-        isOpen={true}
-        onRequestClose={() => router.push('/')}
-        contentLabel="BigImage Modal"
-        className={styles.modal}
-      >
-        {photo && <Photo photo={photo} isBig={true} />}
-      </Modal>
-    </div>
-  );
-}
-export const getServerSideProps = async ({ query }) => {
-  const id = query.id;
-  const res = await fetch(`${server}/api/unsplash/${id}`);
-  const photo = await res.json();
+//   return (
+//     <div>
+//       <Modal
+//         isOpen={true}
+//         onRequestClose={() => router.push('/')}
+//         contentLabel="BigImage Modal"
+//         className={styles.modal}
+//       >
+//         {photo && <Photo photo={photo} isBig={true} />}
+//       </Modal>
+//     </div>
+//   );
+// }
+// export const getServerSideProps = async ({ query }) => {
+//   const id = query.id;
+//   const res = await fetch(`${server}/api/unsplash/${id}`);
+//   const photo = await res.json();
 
-  return {
-    props: { photo },
-  };
-};
+//   return {
+//     props: { photo },
+//   };
+// };
 
 /*
  <div>

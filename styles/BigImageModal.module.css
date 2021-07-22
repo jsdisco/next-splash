@@ -10,3 +10,9 @@
   max-width: 960px;
   margin: 0 auto;
 }
+
+.iconClose {
+  text-align: right;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
