@@ -38,6 +38,7 @@ export default function Photo({ photo }) {
               height={photo.height}
               alt={photo.alt_description}
               loader={loader}
+              quality={100}
             />
             <PhotoInfo photo={photo} closeModal={closeModal} />
           </Modal>
