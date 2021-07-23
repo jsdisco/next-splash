@@ -41,7 +41,7 @@ export default function Home({ data }) {
         handleGridSwitch={handleGridSwitch}
       />
       {errors && <Errors errors={errors} />}
-      {photos.length > 0 && (
+      {photos && photos.length > 0 && (
         <PhotoList
           photos={photos}
           triggerRefetch={triggerRefetch}
