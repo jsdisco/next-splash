@@ -23,7 +23,7 @@ export default function Home({ data }) {
     const fetchImgs = async () => {
       const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
       const refetchedData = await res.json();
-      setPhotos((prev) => [...prev, ...refetchedData]);
+      setPhotos((prev) => [...prev, ...refetchedData.photos]);
     };
     if (currPage > 1) {
       fetchImgs();
