@@ -28,7 +28,13 @@ export default function Home({ data }) {
           setErrors(data.errors);
         } else {
           setErrors(null);
-          setPhotos((prev) => [...prev, ...data.photos]);
+          setPhotos((prev) => {
+            const ids = prev.map((photo) => photo.id);
+            const newUniquePhotos = data.photos.filter(
+              (photo) => !ids.includes(photo.id)
+            );
+            return [...prev, ...newUniquePhotos];
+          });
         }
       } catch (err) {
         setErrors([err.toString()]);

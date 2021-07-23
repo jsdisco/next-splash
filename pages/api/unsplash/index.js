@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     const result = await unsplash.photos.list({ page, perPage: 10 });
 
     if (result.errors) {
-      console.log(`${result.status} ERROR in unsplash.js: ${result.errors}`);
+      console.log(`${result.status} ERROR in /api/unsplash: ${result.errors}`);
       res.status(result.status).json({ errors: result.errors, photos: [] });
     } else {
       const { results } = result.response;

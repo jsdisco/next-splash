@@ -28,4 +28,4 @@ The [id].js endpoint is unused at the moment (see point 3 below).
 
 1. occasionally it happens that the same image is fetched twice in different chunks -> check if it's an issue with the API (if I'm using it wrong) or if it's unavoidable because the API keeps updating their photo lists while my user is scrolling (in which case, implement manual check)
 
-(made sure all map-keys are unique, even if a photo is fetched twice)
+(only add unique photos when re-fetching the next chunk)
