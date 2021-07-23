@@ -21,9 +21,18 @@ export default function Home({ data }) {
 
   useEffect(() => {
     const fetchImgs = async () => {
-      const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
-      const refetchedData = await res.json();
-      setPhotos((prev) => [...prev, ...refetchedData.photos]);
+      try {
+        const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
+        const data = await res.json();
+        if (data.errors) {
+          setErrors(data.errors);
+        } else {
+          setErrors(null);
+          setPhotos((prev) => [...prev, ...data.photos]);
+        }
+      } catch (err) {
+        setErrors([err.toString()]);
+      }
     };
     if (currPage > 1) {
       fetchImgs();
