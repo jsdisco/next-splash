@@ -1,13 +1,13 @@
 import { server } from '../config';
 import { useState, useEffect } from 'react';
+import TopMenu from '../components/TopMenu';
 import PhotoList from '../components/PhotoList';
-import { BsViewStacked, BsGrid1X2 } from 'react-icons/bs';
 
 import styles from '../styles/Home.module.css';
 
 export default function Home({ data }) {
   const [photos, setPhotos] = useState(null);
-  const [currPage, setCurrPage] = useState(2); // initial fetch in getStaticProps defaults to 1, further fetches from the frontend start at 2
+  const [currPage, setCurrPage] = useState(1);
   const [isGridLayout, setIsGridLayout] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,9 @@ export default function Home({ data }) {
       const refetchedData = await res.json();
       setPhotos((prev) => [...prev, ...refetchedData]);
     };
-    fetchImgs();
+    if (currPage > 1) {
+      fetchImgs();
+    }
   }, [currPage]);
 
   const handleGridSwitch = () => setIsGridLayout((prev) => !prev);
@@ -29,16 +31,10 @@ export default function Home({ data }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.topMenu}>
-        <h1>Photos</h1>
-        <button
-          className={styles.btn}
-          onClick={handleGridSwitch}
-          title={isGridLayout ? 'show as list' : 'show as grid'}
-        >
-          {isGridLayout ? <BsViewStacked /> : <BsGrid1X2 />}
-        </button>
-      </div>
+      <TopMenu
+        isGridLayout={isGridLayout}
+        handleGridSwitch={handleGridSwitch}
+      />
 
       {photos && (
         <PhotoList
