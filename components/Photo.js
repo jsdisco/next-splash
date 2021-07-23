@@ -10,6 +10,7 @@ Modal.setAppElement('#__next');
 
 export default function Photo({ photo }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAltTextVisible, setIsAltTextVisible] = useState(true);
 
   const loader = ({ src }) => src;
 
@@ -44,14 +45,20 @@ export default function Photo({ photo }) {
           </Modal>
         </div>
       ) : (
-        <Image
-          src={photo.urls.regular}
-          width={photo.width}
-          height={photo.height}
-          alt={photo.alt_description}
-          onClick={() => setIsModalOpen(true)}
-          loader={loader}
-        />
+        <div className={styles.imgContainer}>
+          <Image
+            src={photo.urls.regular}
+            width={photo.width}
+            height={photo.height}
+            alt={photo.alt_description}
+            onClick={() => setIsModalOpen(true)}
+            onLoad={() => setIsAltTextVisible(false)}
+            loader={loader}
+          />
+          {isAltTextVisible && (
+            <div className={styles.imgAlt}>{photo.alt_description}</div>
+          )}
+        </div>
       )}
     </div>
   );

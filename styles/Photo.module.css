@@ -15,7 +15,26 @@
   box-sizing: content-box;
 }
 
-/* overwrite default modal styles to add a max-width and adjust for mobile */
+.imgContainer {
+  position: relative;
+}
+.imgAlt {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  z-index: 999;
+  font-size: 0.875rem;
+  overflow: hidden;
+  opacity: 0;
+  animation: fade-in 0.3s forwards;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* override default modal styles to add a max-width and adjust for mobile */
 .modal {
   max-width: 960px;
   margin: 0 auto;

@@ -9,7 +9,7 @@ import styles from '../styles/Home.module.css';
 export default function Home({ data }) {
   const [photos, setPhotos] = useState(null);
   const [currPage, setCurrPage] = useState(1);
-  const [isGridLayout, setIsGridLayout] = useState(false);
+  const [isGridLayout, setIsGridLayout] = useState(true);
   const [errors, setErrors] = useState(null);
 
   useEffect(() => {
