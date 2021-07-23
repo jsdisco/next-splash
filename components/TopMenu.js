@@ -5,7 +5,7 @@ import styles from '../styles/TopMenu.module.css';
 export default function TopMenu({ isGridLayout, handleGridSwitch }) {
   return (
     <div className={styles.topMenu}>
-      <h1>Photos</h1>
+      <h2>Photos</h2>
       <button
         className={styles.btn}
         onClick={handleGridSwitch}

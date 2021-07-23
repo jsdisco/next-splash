@@ -6,8 +6,6 @@ The [id].js endpoint is unused at the moment (see point 3 below).
 
 ### TODOS AND COMMENTS:
 
-1. occasionally it happens that the same image is fetched twice in different chunks -> check if it's an issue with the API (if I'm using it wrong) or if it's unavoidable because the API keeps updating their photo lists while my user is scrolling (in which case, implement manual check)
-
 2. console (Firefox) shows issues "unreachable code" (I'm unsure if it's even possible for me to fix since it's coming from the built bundle), console (Chrome) shows issues with third-party cookies
 
 3. clicking on an image to get a larger view doesn't change the URL in the address bar to something like https://app.com/photo/[id] (this worked in a previous version, but closing the modal caused a re-render of the Home component including a complete reset of its state)
@@ -25,3 +23,9 @@ The [id].js endpoint is unused at the moment (see point 3 below).
 9. find out how to use the API's photo.blur_hash with the Image component's baseDataURL / placeholder="blur"
 
 10. styling... (button hover effects, slight box-shadows, :focus, minor adjustments for mobile)
+
+### FIXED:
+
+1. occasionally it happens that the same image is fetched twice in different chunks -> check if it's an issue with the API (if I'm using it wrong) or if it's unavoidable because the API keeps updating their photo lists while my user is scrolling (in which case, implement manual check)
+
+(made sure all map-keys are unique, even if a photo is fetched twice)

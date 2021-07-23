@@ -3,7 +3,7 @@ import styles from '../styles/About.module.css';
 const About = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>About</h1>
+      <h2>About</h2>
       <p>
         <span>Image Gallery using the </span>
         <a href="https://unsplash.com/" target="blank" rel="noreferrer">

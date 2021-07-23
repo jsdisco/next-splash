@@ -17,14 +17,14 @@ export default function PhotoList({ photos, triggerRefetch, isGridLayout }) {
           className={styles.masonryGrid}
           columnClassName={styles.masonryGridColumn}
         >
-          {photos.map((photo) => (
-            <Photo key={photo.id} photo={photo} />
+          {photos.map((photo, i) => (
+            <Photo key={`${photo.id}-${i}`} photo={photo} />
           ))}
         </Masonry>
       ) : (
         <div className={styles.imgList}>
-          {photos.map((photo) => (
-            <div key={photo.id} className={styles.imgWrapper}>
+          {photos.map((photo, i) => (
+            <div key={`${photo.id}-${i}`} className={styles.imgWrapper}>
               <Photo photo={photo} />
             </div>
           ))}
