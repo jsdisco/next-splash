@@ -2,7 +2,7 @@
 
 At initial page load, getStaticProps (with revalidate=60) fetches the first 10 images from the only API endpoint at /api/unsplash. Any further calls to the API are made from the frontend.
 
-The [id].js endpoint is unused at the moment (see point 3 below).
+The [id].js endpoint is now used to fetch more details when clicking on a photo.
 
 ### TODOS AND COMMENTS:
 
