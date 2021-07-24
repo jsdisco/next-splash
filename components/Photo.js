@@ -1,26 +1,15 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import PhotoModal from './PhotoModal';
 
 import styles from '../styles/Photo.module.css';
 
-export default function Photo({ photo }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export default function Photo({ photo, openModal }) {
   const [isAltTextVisible, setIsAltTextVisible] = useState(true);
 
   const loader = ({ src }) => src;
 
-  const closeModal = () => setIsModalOpen(false);
-
   return (
     <div className={styles.photo}>
-      {isModalOpen && (
-        <PhotoModal
-          photoId={photo.id}
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
-        />
-      )}
       <div
         className={styles.imgContainer}
         style={{ backgroundColor: photo.color }}
@@ -30,7 +19,7 @@ export default function Photo({ photo }) {
           width={photo.width}
           height={photo.height}
           alt={photo.alt_description}
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => openModal(photo.id)}
           onLoad={() => setIsAltTextVisible(false)}
           loader={loader}
         />
