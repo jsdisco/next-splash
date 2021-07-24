@@ -2,11 +2,7 @@
 
 At initial page load, `getStaticProps` (with `revalidate=60`) fetches the first 10 images from the endpoint at `/api/unsplash`. Upon scroll, the frontend fetches chunks of 10 images.
 
-<<<<<<< HEAD
-The [id].js endpoint is now used to fetch more details when clicking on a photo.
-=======
 A click on an image shows a Modal with a higher resolution image and some more data, which is reflected in the URL. Shallow routing prevents re-renders of the Home component. Accessing the URL directly will lead to a page https://domain.app/photo/[id], which uses `getServerSideProps` to display the image/information.
->>>>>>> v6
 
 The `/api/unsplash/[id]` endpoint is used
 
@@ -18,3 +14,5 @@ The `/api/unsplash/[id]` endpoint is used
 1. Browser Back/Next buttons don't work when opening an image Modal
 
 2. console (Firefox) shows issues "unreachable code" (I'm unsure if it's even possible for me to fix since it's coming from the built bundle), console (Chrome) shows issues with third-party cookies
+
+3. /photo/[id]: image alt_description and colour while loading
