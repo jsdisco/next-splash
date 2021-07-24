@@ -2,10 +2,6 @@ import { formatDate } from '../utils/helpers';
 import styles from '../styles/PhotoInfo.module.css';
 
 export default function PhotoInfo({ photo, closeModal }) {
-  if (photo.links.html === 'https://unsplash.com/photos/e5dlsEXc4dI') {
-    console.log(photo);
-  }
-
   return (
     <div>
       <div className={styles.listItem}>
@@ -31,7 +27,13 @@ export default function PhotoInfo({ photo, closeModal }) {
       <div className={styles.listItem}>
         <p>
           <span className={styles.listLeftSpan}>Downloads: </span>
-          <span>{photo.downloads || '-'}</span>
+          <span>{photo.downloads}</span>
+        </p>
+      </div>
+      <div className={styles.listItem}>
+        <p>
+          <span className={styles.listLeftSpan}>Views: </span>
+          <span>{photo.views}</span>
         </p>
       </div>
       <div className={styles.listItem}>
@@ -61,7 +63,9 @@ export default function PhotoInfo({ photo, closeModal }) {
       <div className={styles.listItem}>
         <p>
           <span className={styles.listLeftSpan}>Unsplash Link:</span>
-          <a href={photo.links.html}>{photo.links.html}</a>
+          <a href={photo.links.html} target="_blank" rel="noreferrer">
+            {photo.links.html}
+          </a>
         </p>
       </div>
       <div className={styles.listItemButton}>

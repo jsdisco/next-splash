@@ -2,9 +2,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry from 'react-masonry-css';
 import Photo from '../components/Photo';
 
-import styles from '../styles/PhotoList.module.css';
+import styles from '../styles/Photos.module.css';
 
-export default function PhotoList({ photos, triggerRefetch, isGridLayout }) {
+export default function Photos({ photos, triggerRefetch, isGridLayout }) {
   return (
     <InfiniteScroll
       dataLength={photos.length}

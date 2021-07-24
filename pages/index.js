@@ -1,7 +1,7 @@
 import { server } from '../config';
 import { useState, useEffect } from 'react';
 import TopMenu from '../components/TopMenu';
-import PhotoList from '../components/PhotoList';
+import Photos from '../components/Photos';
 import Errors from '../components/Errors';
 
 import styles from '../styles/Home.module.css';
@@ -57,7 +57,7 @@ export default function Home({ data }) {
       />
       {errors && <Errors errors={errors} />}
       {photos && photos.length > 0 && (
-        <PhotoList
+        <Photos
           photos={photos}
           triggerRefetch={triggerRefetch}
           isGridLayout={isGridLayout}
