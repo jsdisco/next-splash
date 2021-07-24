@@ -1,7 +1,9 @@
 import { server } from '../config';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import TopMenu from '../components/TopMenu';
 import Photos from '../components/Photos';
+import PhotoModal from '../components/PhotoModal';
 import Errors from '../components/Errors';
 
 import styles from '../styles/Home.module.css';
@@ -10,7 +12,11 @@ export default function Home({ data }) {
   const [photos, setPhotos] = useState(null);
   const [currPage, setCurrPage] = useState(1);
   const [isGridLayout, setIsGridLayout] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currPhotoId, setCurrPhotoId] = useState(null);
   const [errors, setErrors] = useState(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (data.errors) {
@@ -49,6 +55,27 @@ export default function Home({ data }) {
 
   const triggerRefetch = () => setCurrPage((prev) => prev + 1);
 
+  const openModal = (id) => {
+    router.push(`/?photo=${id}`, `/photo/${id}`, { shallow: true });
+    setIsModalOpen(true);
+    setCurrPhotoId(id);
+  };
+
+  const closeModal = () => {
+    router.push('/', undefined, { shallow: true });
+    setIsModalOpen(false);
+    setCurrPhotoId(null);
+  };
+
+  /*
+  useEffect(() => {
+    if (router.asPath === '/') {
+      //router.push('/', undefined, { shallow: true });
+    }
+    console.log(router);
+  }, [router.asPath]);
+  */
+
   return (
     <div className={styles.wrapper}>
       <TopMenu
@@ -61,7 +88,17 @@ export default function Home({ data }) {
           photos={photos}
           triggerRefetch={triggerRefetch}
           isGridLayout={isGridLayout}
+          openModal={openModal}
         />
+      )}
+      {isModalOpen && (
+        <div>
+          <PhotoModal
+            photoId={currPhotoId}
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+          />
+        </div>
       )}
     </div>
   );
