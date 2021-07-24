@@ -14,19 +14,26 @@
   cursor: pointer;
   box-sizing: content-box;
 }
+@media (hover) {
+  .iconClose svg:hover {
+    filter: brightness(1.2);
+  }
+}
 
 .imgContainer {
   position: relative;
 }
 .imgAlt {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0.25rem;
   left: 0.25rem;
   z-index: 999;
   font-size: 0.875rem;
   overflow: hidden;
-  opacity: 0;
-  animation: fade-in 0.3s forwards;
+  opacity: 1;
+  /*animation: fade-in 0.3s forwards;*/
 }
 @keyframes fade-in {
   to {

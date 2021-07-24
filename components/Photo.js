@@ -24,7 +24,7 @@ export default function Photo({ photo }) {
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
             contentLabel="Photo - Additional Info"
-            className={styles.modal}
+            preventScroll={true}
           >
             <div className={styles.iconClose}>
               <IoCloseCircle
@@ -45,7 +45,10 @@ export default function Photo({ photo }) {
           </Modal>
         </div>
       ) : (
-        <div className={styles.imgContainer}>
+        <div
+          className={styles.imgContainer}
+          style={{ backgroundColor: photo.color }}
+        >
           <Image
             src={photo.urls.regular}
             width={photo.width}

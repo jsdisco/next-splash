@@ -18,7 +18,10 @@ export default async function handler(req, res) {
       res.status(200).json({ photos: results });
     }
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ errors: ['Internal Server Error'], photos: [] });
+    console.log(`catch ERROR in /api/unsplash: ${err.message}`);
+    res.status(500).json({
+      errors: (err.message && [err.message]) || ['Internal Server Error'],
+      photos: [],
+    });
   }
 }

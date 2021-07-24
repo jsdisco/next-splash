@@ -1,6 +1,8 @@
 .navigation {
   height: 5rem;
   background-color: cadetblue;
+  box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 .navigation ul {
   height: 100%;
@@ -18,11 +20,16 @@
   font-weight: bold;
   letter-spacing: 1px;
   text-decoration: none;
-  color: #f5f5f5;
+  color: #e5e5e5;
   outline: transparent;
   border: 3px solid transparent;
   border-radius: 4px;
 }
 .navigation a:focus {
   border: 3px solid black;
+}
+@media (hover) {
+  .navigation a:hover {
+    filter: brightness(1.2);
+  }
 }
