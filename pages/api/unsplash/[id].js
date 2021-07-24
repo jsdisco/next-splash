@@ -1,9 +1,3 @@
-//
-//
-// previously used in a version where clicking on an image led to a different URL
-//
-//
-
 import { createApi } from 'unsplash-js';
 
 const unsplash = createApi({
@@ -12,12 +6,22 @@ const unsplash = createApi({
 
 export default async function handler(req, res) {
   const id = req.query.id;
-  const result = await unsplash.photos.get({ photoId: id });
 
-  if (result.errors) {
-    console.log(`ERROR in unsplash.js: ${result.errors}`);
-    res.json({ errors });
-  } else {
-    res.status(200).json(result.response);
+  try {
+    const result = await unsplash.photos.get({ photoId: id });
+    if (result.errors) {
+      console.log(
+        `${result.status} ERROR in /api/unsplash/[id]: ${result.errors}`
+      );
+      res.status(result.status).json({ errors: result.errors, photo: null });
+    } else {
+      res.status(200).json({ photo: result.response });
+    }
+  } catch (err) {
+    console.log(`catch ERROR in /api/unsplash/[id]: ${err.message}`);
+    res.status(500).json({
+      errors: (err.message && [err.message]) || ['Internal Server Error'],
+      photo: null,
+    });
   }
 }

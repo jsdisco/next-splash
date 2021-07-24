@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import Modal from 'react-modal';
 import Image from 'next/image';
-import PhotoInfo from './PhotoInfo';
-import { IoCloseCircle } from 'react-icons/io5';
+import PhotoModal from './PhotoModal';
 
 import styles from '../styles/Photo.module.css';
-
-Modal.setAppElement('#__next');
 
 export default function Photo({ photo }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,51 +14,32 @@ export default function Photo({ photo }) {
 
   return (
     <div className={styles.photo}>
-      {isModalOpen ? (
+      {isModalOpen && (
         <div>
-          <Modal
-            isOpen={isModalOpen}
-            onRequestClose={() => setIsModalOpen(false)}
-            contentLabel="Photo - Additional Info"
-            preventScroll={true}
-          >
-            <div className={styles.iconClose}>
-              <IoCloseCircle
-                color="cadetblue"
-                size="32"
-                onClick={() => setIsModalOpen(false)}
-              />
-            </div>
-            <Image
-              src={photo.urls.regular}
-              width={photo.width}
-              height={photo.height}
-              alt={photo.alt_description}
-              loader={loader}
-              quality={100}
-            />
-            <PhotoInfo photo={photo} closeModal={closeModal} />
-          </Modal>
-        </div>
-      ) : (
-        <div
-          className={styles.imgContainer}
-          style={{ backgroundColor: photo.color }}
-        >
-          <Image
-            src={photo.urls.regular}
-            width={photo.width}
-            height={photo.height}
-            alt={photo.alt_description}
-            onClick={() => setIsModalOpen(true)}
-            onLoad={() => setIsAltTextVisible(false)}
-            loader={loader}
+          <PhotoModal
+            photoId={photo.id}
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
           />
-          {isAltTextVisible && (
-            <div className={styles.imgAlt}>{photo.alt_description}</div>
-          )}
         </div>
       )}
+      <div
+        className={styles.imgContainer}
+        style={{ backgroundColor: photo.color }}
+      >
+        <Image
+          src={photo.urls.regular}
+          width={photo.width}
+          height={photo.height}
+          alt={photo.alt_description}
+          onClick={() => setIsModalOpen(true)}
+          onLoad={() => setIsAltTextVisible(false)}
+          loader={loader}
+        />
+        {isAltTextVisible && (
+          <div className={styles.imgAlt}>{photo.alt_description}</div>
+        )}
+      </div>
     </div>
   );
 }

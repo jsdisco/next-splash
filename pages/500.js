@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import styles from '../styles/CustomError.module.css';
+import styles from '../styles/CustomErrorPage.module.css';
 
 const InternalServerError = () => {
   return (

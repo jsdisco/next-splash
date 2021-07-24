@@ -1,24 +1,6 @@
 .photo img {
   cursor: pointer;
 }
-.photo img:focus {
-  border: 3px solid black !important;
-}
-
-.iconClose {
-  text-align: right;
-  margin-bottom: 1rem;
-}
-.iconClose svg {
-  padding: 8px;
-  cursor: pointer;
-  box-sizing: content-box;
-}
-@media (hover) {
-  .iconClose svg:hover {
-    filter: brightness(1.2);
-  }
-}
 
 .imgContainer {
   position: relative;
@@ -32,31 +14,11 @@
   z-index: 999;
   font-size: 0.875rem;
   overflow: hidden;
-  opacity: 1;
-  /*animation: fade-in 0.3s forwards;*/
+  opacity: 0;
+  animation: fade-in 0.3s forwards;
 }
 @keyframes fade-in {
   to {
     opacity: 1;
-  }
-}
-
-/* override default modal styles to add a max-width and adjust for mobile */
-.modal {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 8px 20px 20px;
-  position: absolute;
-  inset: 20px;
-  border: 1px solid rgb(204, 204, 204);
-  border-radius: 4px;
-  background: rgb(255, 255, 255);
-  overflow: auto;
-  outline: none;
-}
-
-@media (min-width: 768px) {
-  .modal {
-    inset: 40px;
   }
 }
