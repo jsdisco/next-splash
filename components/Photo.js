@@ -15,13 +15,11 @@ export default function Photo({ photo }) {
   return (
     <div className={styles.photo}>
       {isModalOpen && (
-        <div>
-          <PhotoModal
-            photoId={photo.id}
-            isModalOpen={isModalOpen}
-            closeModal={closeModal}
-          />
-        </div>
+        <PhotoModal
+          photoId={photo.id}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+        />
       )}
       <div
         className={styles.imgContainer}
