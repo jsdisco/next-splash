@@ -22,6 +22,8 @@ export default function PhotoModal({ photoId, closeModal }) {
       try {
         const res = await fetch(`${server}/api/unsplash/${photoId}`);
         const data = await res.json();
+
+        // response is always an object with a photo (Object) and an errors (Array) property
         if (data.errors) {
           setErrors(data.errors);
         } else {

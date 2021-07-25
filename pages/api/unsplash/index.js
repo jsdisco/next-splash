@@ -4,7 +4,9 @@ const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY,
 });
 
+// responds with an object that always has a photos and an errors property
 export default async function handler(req, res) {
+  // initial fetch from getStaticProps comes without query attached
   const page = req.query.page || 1;
 
   try {
@@ -12,16 +14,16 @@ export default async function handler(req, res) {
 
     if (result.errors) {
       console.log(`${result.status} ERROR in /api/unsplash: ${result.errors}`);
-      res.status(result.status).json({ errors: result.errors, photos: [] });
+      res.status(result.status).json({ photos: [], errors: result.errors });
     } else {
       const { results } = result.response;
-      res.status(200).json({ photos: results });
+      res.status(result.status).json({ photos: results, errors: null });
     }
   } catch (err) {
     console.log(`catch ERROR in /api/unsplash: ${err.message}`);
     res.status(500).json({
-      errors: (err.message && [err.message]) || ['Internal Server Error'],
       photos: [],
+      errors: (err.message && [err.message]) || ['Internal Server Error'],
     });
   }
 }

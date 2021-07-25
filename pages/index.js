@@ -11,9 +11,9 @@ import globalWrapperStyles from '../styles/globalWrapper.module.css';
 export default function Home({ data }) {
   const [photos, setPhotos] = useState(null);
   const [currPage, setCurrPage] = useState(1);
+  const [currPhotoId, setCurrPhotoId] = useState(null);
   const [isGridLayout, setIsGridLayout] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currPhotoId, setCurrPhotoId] = useState(null);
   const [errors, setErrors] = useState(null);
 
   const router = useRouter();
@@ -25,11 +25,14 @@ export default function Home({ data }) {
     setPhotos(data.photos);
   }, [data]);
 
+  // fetch more images when InfiniteScroll component increments currPage
   useEffect(() => {
     const fetchImgs = async () => {
       try {
         const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
         const data = await res.json();
+
+        // response is always an object with a photos (Array) and an errors (Array) property
         if (data.errors) {
           setErrors(data.errors);
         } else {
@@ -51,6 +54,17 @@ export default function Home({ data }) {
     }
   }, [currPage]);
 
+  // handle behaviour for browser back/next btns
+  useEffect(() => {
+    if (router.asPath === '/') {
+      setIsModalOpen(false);
+      setCurrPhotoId(null);
+    } else {
+      setCurrPhotoId(router.asPath.replace('/photo/', ''));
+      setIsModalOpen(true);
+    }
+  }, [router.asPath]);
+
   const handleGridSwitch = () => setIsGridLayout((prev) => !prev);
 
   const triggerRefetch = () => setCurrPage((prev) => prev + 1);
@@ -67,23 +81,13 @@ export default function Home({ data }) {
     setCurrPhotoId(null);
   };
 
-  useEffect(() => {
-    if (router.asPath === '/') {
-      setIsModalOpen(false);
-      setCurrPhotoId(null);
-    } else {
-      setCurrPhotoId(router.asPath.replace('/photo/', ''));
-      setIsModalOpen(true);
-    }
-  }, [router.asPath]);
-
   return (
     <div className={globalWrapperStyles.wrapper}>
       <TopMenu
         isGridLayout={isGridLayout}
         handleGridSwitch={handleGridSwitch}
       />
-      {errors && <Errors errors={errors} />}
+      {errors && <Errors errors={errors} status={data.status} />}
       {photos && photos.length > 0 && (
         <Photos
           photos={photos}
@@ -105,6 +109,7 @@ export const getStaticProps = async () => {
   const res = await fetch(`${server}/api/unsplash`);
   const data = await res.json();
 
+  // res.status is either the status code that came back from Unsplash API or a generic 500
   data.status = res.status;
 
   return { props: { data }, revalidate: 60 };
