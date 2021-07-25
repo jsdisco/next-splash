@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import PhotoInfo from './PhotoInfo';
+import { previewTextColor } from '../utils/helpers';
 
 import wrapperStyles from '../styles/globalWrapper.module.css';
 import imgContainerStyles from '../styles/globalImgContainer.module.css';
@@ -11,7 +12,10 @@ export default function PhotoPage({ photo }) {
     <div className={wrapperStyles.wrapper}>
       <div
         className={imgContainerStyles.imgContainer}
-        style={{ backgroundColor: photo.color }}
+        style={{
+          backgroundColor: photo.color,
+          color: previewTextColor(photo.color),
+        }}
       >
         <div className={imgContainerStyles.imgAlt}>{photo.alt_description}</div>
         <Image
