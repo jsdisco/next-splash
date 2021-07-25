@@ -67,14 +67,15 @@ export default function Home({ data }) {
     setCurrPhotoId(null);
   };
 
-  /*
   useEffect(() => {
     if (router.asPath === '/') {
-      //router.push('/', undefined, { shallow: true });
+      setIsModalOpen(false);
+      setCurrPhotoId(null);
+    } else {
+      setCurrPhotoId(router.asPath.replace('/photo/', ''));
+      setIsModalOpen(true);
     }
-    console.log(router);
   }, [router.asPath]);
-  */
 
   return (
     <div className={globalWrapperStyles.wrapper}>

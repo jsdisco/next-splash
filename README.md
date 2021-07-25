@@ -11,8 +11,10 @@ The `/api/unsplash/[id]` endpoint is used
 
 ### TODOS:
 
-1. Browser Back/Next buttons don't work when opening an image Modal
-
 2. console (Firefox) shows issues "unreachable code" (I'm unsure if it's even possible for me to fix since it's coming from the built bundle), console (Chrome) shows issues with third-party cookies
 
 3. review focus indicator
+
+### FIXED:
+
+1. Browser Back/Next buttons don't work when opening an image Modal
