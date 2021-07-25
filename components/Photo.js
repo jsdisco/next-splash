@@ -1,22 +1,14 @@
 import Image from 'next/image';
-import { previewTextColor } from '../utils/helpers';
+import ImgWrapper from './ImgWrapper';
 
 import styles from '../styles/Photo.module.css';
-import imgContainerStyles from '../styles/globalImgContainer.module.css';
 
 export default function Photo({ photo, openModal }) {
   const loader = ({ src }) => src;
 
   return (
     <div className={styles.photo}>
-      <div
-        className={imgContainerStyles.imgContainer}
-        style={{
-          backgroundColor: photo.color,
-          color: previewTextColor(photo.color),
-        }}
-      >
-        <div className={imgContainerStyles.imgAlt}>{photo.alt_description}</div>
+      <ImgWrapper photoColor={photo.color} photoAlt={photo.alt_description}>
         <Image
           src={photo.urls.regular}
           width={photo.width}
@@ -25,7 +17,7 @@ export default function Photo({ photo, openModal }) {
           onClick={() => openModal(photo.id)}
           loader={loader}
         />
-      </div>
+      </ImgWrapper>
     </div>
   );
 }

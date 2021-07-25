@@ -1,23 +1,15 @@
 import Image from 'next/image';
+import ImgWrapper from './ImgWrapper';
 import PhotoInfo from './PhotoInfo';
-import { previewTextColor } from '../utils/helpers';
 
 import wrapperStyles from '../styles/globalWrapper.module.css';
-import imgContainerStyles from '../styles/globalImgContainer.module.css';
 
 export default function PhotoPage({ photo }) {
   const loader = ({ src }) => src;
 
   return (
     <div className={wrapperStyles.wrapper}>
-      <div
-        className={imgContainerStyles.imgContainer}
-        style={{
-          backgroundColor: photo.color,
-          color: previewTextColor(photo.color),
-        }}
-      >
-        <div className={imgContainerStyles.imgAlt}>{photo.alt_description}</div>
+      <ImgWrapper photoColor={photo.color} photoAlt={photo.alt_description}>
         <Image
           src={photo.urls.full}
           width={photo.width}
@@ -26,7 +18,8 @@ export default function PhotoPage({ photo }) {
           loader={loader}
           quality={100}
         />
-      </div>
+      </ImgWrapper>
+
       <PhotoInfo photo={photo} />
     </div>
   );

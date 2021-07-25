@@ -2,13 +2,12 @@ import { server } from '../config';
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
+import ImgWrapper from './ImgWrapper';
 import PhotoInfo from './PhotoInfo';
 import Errors from './Errors';
 import { IoCloseCircle } from 'react-icons/io5';
-import { previewTextColor } from '../utils/helpers';
 
 import styles from '../styles/PhotoModal.module.css';
-import imgContainerStyles from '../styles/globalImgContainer.module.css';
 
 Modal.setAppElement('#__next');
 
@@ -50,16 +49,7 @@ export default function PhotoModal({ photoId, closeModal }) {
           <div className={styles.iconClose}>
             <IoCloseCircle color="cadetblue" size="32" onClick={closeModal} />
           </div>
-          <div
-            className={imgContainerStyles.imgContainer}
-            style={{
-              backgroundColor: photo.color,
-              color: previewTextColor(photo.color),
-            }}
-          >
-            <div className={imgContainerStyles.imgAlt}>
-              {photo.alt_description}
-            </div>
+          <ImgWrapper photoColor={photo.color} photoAlt={photo.alt_description}>
             <Image
               src={photo.urls.full}
               width={photo.width}
@@ -68,7 +58,7 @@ export default function PhotoModal({ photoId, closeModal }) {
               loader={loader}
               quality={100}
             />
-          </div>
+          </ImgWrapper>
           <PhotoInfo photo={photo} />
           <div className={styles.btnClose}>
             <button onClick={closeModal}>close</button>
