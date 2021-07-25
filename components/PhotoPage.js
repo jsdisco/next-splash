@@ -8,14 +8,20 @@ export default function PhotoPage({ photo }) {
 
   return (
     <div className={styles.photoPage}>
-      <Image
-        src={photo.urls.regular}
-        width={photo.width}
-        height={photo.height}
-        alt={photo.alt_description}
-        loader={loader}
-        quality={100}
-      />
+      <div
+        className={styles.imgContainer}
+        style={{ backgroundColor: photo.color }}
+      >
+        <div className={styles.imgAlt}>{photo.alt_description}</div>
+        <Image
+          src={photo.urls.full}
+          width={photo.width}
+          height={photo.height}
+          alt={photo.alt_description}
+          loader={loader}
+          quality={100}
+        />
+      </div>
       <PhotoInfo photo={photo} />
     </div>
   );

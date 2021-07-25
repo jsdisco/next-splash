@@ -7,8 +7,26 @@
   cursor: pointer;
   box-sizing: content-box;
 }
+
+.btnClose {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+.btnClose button {
+  padding: 0.5rem 1rem;
+  background: cadetblue;
+  border: none;
+  border-radius: 4px;
+  outline: black;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
 @media (hover) {
-  .iconClose svg:hover {
+  .iconClose svg:hover,
+  .btnClose button:hover {
     filter: brightness(1.2);
   }
 }

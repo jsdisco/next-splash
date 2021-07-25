@@ -1,7 +1,7 @@
 import { formatDate } from '../utils/helpers';
 import styles from '../styles/PhotoInfo.module.css';
 
-export default function PhotoInfo({ photo, closeModal }) {
+export default function PhotoInfo({ photo }) {
   return (
     <div>
       <div className={styles.listItem}>
@@ -68,13 +68,6 @@ export default function PhotoInfo({ photo, closeModal }) {
           </a>
         </p>
       </div>
-      {/* If this component is rendered by PhotoModal, it receives a handler to close the Modal.
-      If it is rendered by PhotoPage instead, it's only a list of data and receives no handler. */}
-      {closeModal !== undefined && (
-        <div className={styles.listItemButton}>
-          <button onClick={closeModal}>close</button>
-        </div>
-      )}
     </div>
   );
 }

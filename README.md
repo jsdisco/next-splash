@@ -15,4 +15,4 @@ The `/api/unsplash/[id]` endpoint is used
 
 2. console (Firefox) shows issues "unreachable code" (I'm unsure if it's even possible for me to fix since it's coming from the built bundle), console (Chrome) shows issues with third-party cookies
 
-3. /photo/[id]: image alt_description and colour while loading
+3. review focus indicator

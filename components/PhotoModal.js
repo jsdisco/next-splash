@@ -48,15 +48,20 @@ export default function PhotoModal({ photoId, isModalOpen, closeModal }) {
           <div className={styles.iconClose}>
             <IoCloseCircle color="cadetblue" size="32" onClick={closeModal} />
           </div>
-          <Image
-            src={photo.urls.regular}
-            width={photo.width}
-            height={photo.height}
-            alt={photo.alt_description}
-            loader={loader}
-            quality={100}
-          />
-          <PhotoInfo photo={photo} closeModal={closeModal} />
+          <div style={{ backgroundColor: photo.color }}>
+            <Image
+              src={photo.urls.full}
+              width={photo.width}
+              height={photo.height}
+              alt={photo.alt_description}
+              loader={loader}
+              quality={100}
+            />
+          </div>
+          <PhotoInfo photo={photo} />
+          <div className={styles.btnClose}>
+            <button onClick={closeModal}>close</button>
+          </div>
         </Modal>
       )}
     </>

@@ -5,10 +5,8 @@ const unsplash = createApi({
 });
 
 export default async function handler(req, res) {
-  const id = req.query.id;
-
   try {
-    const result = await unsplash.photos.get({ photoId: id });
+    const result = await unsplash.photos.get({ photoId: req.query.id });
     if (result.errors) {
       console.log(
         `${result.status} ERROR in /api/unsplash/[id]: ${result.errors}`

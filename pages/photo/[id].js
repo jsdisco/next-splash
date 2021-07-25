@@ -17,7 +17,7 @@ export default function PhotoDetailsPage({ data }) {
   return (
     <>
       {errors && <Errors errors={errors} />}
-      <PhotoPage photo={data.photo}></PhotoPage>
+      {data.photo && <PhotoPage photo={data.photo}></PhotoPage>}
     </>
   );
 }
