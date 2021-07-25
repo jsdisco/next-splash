@@ -6,7 +6,7 @@ import Photos from '../components/Photos';
 import PhotoModal from '../components/PhotoModal';
 import Errors from '../components/Errors';
 
-import styles from '../styles/Home.module.css';
+import globalWrapperStyles from '../styles/globalWrapper.module.css';
 
 export default function Home({ data }) {
   const [photos, setPhotos] = useState(null);
@@ -77,7 +77,7 @@ export default function Home({ data }) {
   */
 
   return (
-    <div className={styles.wrapper}>
+    <div className={globalWrapperStyles.wrapper}>
       <TopMenu
         isGridLayout={isGridLayout}
         handleGridSwitch={handleGridSwitch}
@@ -93,11 +93,7 @@ export default function Home({ data }) {
       )}
       {isModalOpen && (
         <div>
-          <PhotoModal
-            photoId={currPhotoId}
-            isModalOpen={isModalOpen}
-            closeModal={closeModal}
-          />
+          <PhotoModal photoId={currPhotoId} closeModal={closeModal} />
         </div>
       )}
     </div>

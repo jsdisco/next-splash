@@ -1,10 +1,7 @@
-.photoPage {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
 .imgContainer {
   position: relative;
+  opacity: 0;
+  animation: fade-in 0.3s forwards;
 }
 .imgAlt {
   width: 100%;

@@ -7,10 +7,11 @@ import Errors from './Errors';
 import { IoCloseCircle } from 'react-icons/io5';
 
 import styles from '../styles/PhotoModal.module.css';
+import imgContainerStyles from '../styles/globalImgContainer.module.css';
 
 Modal.setAppElement('#__next');
 
-export default function PhotoModal({ photoId, isModalOpen, closeModal }) {
+export default function PhotoModal({ photoId, closeModal }) {
   const [photo, setPhoto] = useState(null);
   const [errors, setErrors] = useState(null);
 
@@ -39,7 +40,7 @@ export default function PhotoModal({ photoId, isModalOpen, closeModal }) {
       {errors && <Errors errors={errors} />}
       {photo && (
         <Modal
-          isOpen={isModalOpen}
+          isOpen={true}
           onRequestClose={closeModal}
           contentLabel="Photo - Additional Info"
           preventScroll={true}
@@ -48,7 +49,13 @@ export default function PhotoModal({ photoId, isModalOpen, closeModal }) {
           <div className={styles.iconClose}>
             <IoCloseCircle color="cadetblue" size="32" onClick={closeModal} />
           </div>
-          <div style={{ backgroundColor: photo.color }}>
+          <div
+            className={imgContainerStyles.imgContainer}
+            style={{ backgroundColor: photo.color }}
+          >
+            <div className={imgContainerStyles.imgAlt}>
+              {photo.alt_description}
+            </div>
             <Image
               src={photo.urls.full}
               width={photo.width}

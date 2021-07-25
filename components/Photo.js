@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import styles from '../styles/Photo.module.css';
+import imgContainerStyles from '../styles/globalImgContainer.module.css';
 
 export default function Photo({ photo, openModal }) {
   const loader = ({ src }) => src;
@@ -8,15 +9,15 @@ export default function Photo({ photo, openModal }) {
   return (
     <div className={styles.photo}>
       <div
-        className={styles.imgContainer}
+        className={imgContainerStyles.imgContainer}
         style={{ backgroundColor: photo.color }}
       >
-        <div className={styles.imgAlt}>{photo.alt_description}</div>
+        <div className={imgContainerStyles.imgAlt}>{photo.alt_description}</div>
         <Image
           src={photo.urls.regular}
           width={photo.width}
           height={photo.height}
-          alt={photo.alt_description || ''}
+          alt={photo.alt_description}
           onClick={() => openModal(photo.id)}
           loader={loader}
         />

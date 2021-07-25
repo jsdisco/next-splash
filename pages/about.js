@@ -1,8 +1,9 @@
 import styles from '../styles/About.module.css';
+import globalWrapperStyles from '../styles/globalWrapper.module.css';
 
 const About = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={globalWrapperStyles.wrapper}>
       <h2>About</h2>
       <p>
         <span>Image Gallery using the </span>

@@ -1,18 +1,19 @@
 import Image from 'next/image';
 import PhotoInfo from './PhotoInfo';
 
-import styles from '../styles/PhotoPage.module.css';
+import wrapperStyles from '../styles/globalWrapper.module.css';
+import imgContainerStyles from '../styles/globalImgContainer.module.css';
 
 export default function PhotoPage({ photo }) {
   const loader = ({ src }) => src;
 
   return (
-    <div className={styles.photoPage}>
+    <div className={wrapperStyles.wrapper}>
       <div
-        className={styles.imgContainer}
+        className={imgContainerStyles.imgContainer}
         style={{ backgroundColor: photo.color }}
       >
-        <div className={styles.imgAlt}>{photo.alt_description}</div>
+        <div className={imgContainerStyles.imgAlt}>{photo.alt_description}</div>
         <Image
           src={photo.urls.full}
           width={photo.width}
