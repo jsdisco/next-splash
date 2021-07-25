@@ -1,4 +1,4 @@
-export default function Errors({ errors, status }) {
+export default function Errors({ errors, status = '' }) {
   return (
     <div style={{ marginBottom: '1rem' }}>
       <p style={{ color: 'crimson' }}>Error:</p>

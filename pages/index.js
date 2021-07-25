@@ -87,7 +87,7 @@ export default function Home({ data }) {
         isGridLayout={isGridLayout}
         handleGridSwitch={handleGridSwitch}
       />
-      {errors && <Errors errors={errors} status={data.status} />}
+      {errors && <Errors errors={errors} />}
       {photos && photos.length > 0 && (
         <Photos
           photos={photos}

@@ -11,10 +11,4 @@ The `/api/unsplash/[id]` endpoint is used
 
 ### TODOS:
 
-2. console (Firefox) shows issues "unreachable code" (I'm unsure if it's even possible for me to fix since it's coming from the built bundle), console (Chrome) shows issues with third-party cookies
-
-3. review focus indicator
-
-### FIXED:
-
-1. Browser Back/Next buttons don't work when opening an image Modal
+1. console (Firefox) shows issues "unreachable code" (I'm unsure if it's even possible for me to fix since it's coming from the built bundle), console (Chrome) shows issues with third-party cookies
