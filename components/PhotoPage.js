@@ -7,8 +7,6 @@ import wrapperStyles from '../styles/globalWrapper.module.css';
 export default function PhotoPage({ photo }) {
   const loader = ({ src }) => src;
 
-  console.log(photo);
-
   return (
     <div className={wrapperStyles.wrapper}>
       <ImgWrapper photoColor={photo.color} photoAlt={photo.alt_description}>
