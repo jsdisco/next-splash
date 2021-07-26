@@ -33,7 +33,7 @@
 
 /* override default modal styles to add a max-width and adjust for mobile */
 .modal {
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 8px 20px 20px;
   position: absolute;

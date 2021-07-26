@@ -112,5 +112,5 @@ export const getStaticProps = async () => {
   // res.status is either the status code that came back from Unsplash API or a generic 500
   data.status = res.status;
 
-  return { props: { data }, revalidate: 60 };
+  return { props: { data }, revalidate: 3600 };
 };
