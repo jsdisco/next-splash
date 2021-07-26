@@ -1,4 +1,3 @@
-import { server } from '../config';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import TopMenu from '../components/TopMenu';
@@ -29,7 +28,9 @@ export default function Home({ data }) {
   useEffect(() => {
     const fetchImgs = async () => {
       try {
-        const res = await fetch(`${server}/api/unsplash?page=${currPage}`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER}/api/unsplash?page=${currPage}`
+        );
         const data = await res.json();
 
         // response is always an object with a photos (Array) and an errors (Array) property
@@ -106,7 +107,7 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/unsplash`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/unsplash`);
   const data = await res.json();
 
   // res.status is either the status code that came back from Unsplash API or a generic 500

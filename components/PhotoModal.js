@@ -1,4 +1,3 @@
-import { server } from '../config';
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
@@ -14,13 +13,15 @@ Modal.setAppElement('#__next');
 export default function PhotoModal({ photoId, closeModal }) {
   const [photo, setPhoto] = useState(null);
   const [errors, setErrors] = useState(null);
-
+  console.log(process.env.NEXT_PUBLIC_SERVER, photoId);
   const loader = ({ src }) => src;
 
   useEffect(() => {
     const fetchImg = async () => {
       try {
-        const res = await fetch(`${server}/api/unsplash/${photoId}`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER}/api/unsplash/${photoId}`
+        );
         const data = await res.json();
 
         // response is always an object with a photo (Object) and an errors (Array) property
