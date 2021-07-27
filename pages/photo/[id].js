@@ -22,7 +22,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { data },
-    revalidate: 600,
+    revalidate: 3600,
   };
 };
 
@@ -32,18 +32,3 @@ export const getStaticPaths = async () => {
     fallback: 'blocking',
   };
 };
-
-/*
-export const getServerSideProps = async ({ query }) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER}/api/unsplash/${query.id}`
-  );
-  const data = await res.json();
-
-  data.status = res.status;
-
-  return {
-    props: { data },
-  };
-};
-*/
