@@ -1,6 +1,6 @@
 ## Motivation
 
-An infinite-scroll photo page, built with (Next.js)[https://nextjs.org/]. 
+An infinite-scroll photo page, built with [Next.js](https://nextjs.org/). 
 (Serving as a code sample, as specified in a job interview)
 
 ### Use of Next.js
